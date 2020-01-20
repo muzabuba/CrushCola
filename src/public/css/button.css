@@ -1,0 +1,16 @@
+.btn_def
+{
+    background-color: beige;
+    border: 1px solid gray;
+    width: 100%;
+}
+
+.btn_def:active
+{
+    color: black;
+}
+
+.btn_def:hover
+{
+    background-color: cornflowerblue;
+}

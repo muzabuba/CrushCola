@@ -1,0 +1,20 @@
+html {
+    margin: 0px;
+    padding: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#root
+{
+    width: 100%;
+    height: 100%;
+}
+
+.panel_def
+{
+    background-color: ghostwhite;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+}
