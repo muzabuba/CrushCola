@@ -1,34 +1,21 @@
 class Panel
 {
     constructor(el) {
-        this.el = el;
-        this.prefix = 'pnl';
-        this.name = 'panel';
-        this.xtype = 'panel_def';
-        this.renderer = false;
-        this.items = [];
-
-        this.id = utils.createId(this.prefix, ++pnlCount);
+        this.config = utils.createComponent(el, 'panel');
     }
 
     render(){
-        if (this.el != null) {
+        var root = this.config.root;
+        if (root != null) {
             var panel = document.createElement('div');
-            var config = {
-                id: this.id, 
-                name: this.name,
-                text: this.text,
-                xtype: this.xtype
-            };
 
-            panel.id = config.id;
-            panel.className = this.xtype;
-            panel.renderer = true;
-            panel.items = this.items;
+            panel.id = this.config.id;
+            panel.config = this.config;
+            panel.items = this.config.items;
+            this.config.renderer = true;
+            
 
-            panel.config = config;
-
-            this.el.appendChild(panel);
+            root.appendChild(panel);
             return this;
         }
 
