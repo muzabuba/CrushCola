@@ -1,43 +1,24 @@
 class Button{
     constructor(el) {
-        this.el = el;
-        this.prefix = 'btn';
-        this.name = 'button';
-        this.text = 'Text';
-        this.xtype = 'btn_def';
-        this.renderer = false;
-
-        this.id = utils.createId(this.prefix, ++btnCount);
-    }
-
-    addStyle() {
-       utils.getCmp(this.id).classList.add('test');
-    }
-
-    addEvent(name, callback) {
-        utils.getCmp(this.id).addEventListener(name, callback);
+        this.config = utils.createComponent(el, 'button');
     }
 
     render() 
     {
-        if (this.el != null) {
-            var button = document.createElement('button');
-            var config = {
-                id: this.id, 
-                name: this.name,
-                text: this.text,
-                xtype: this.xtype
-            };
+        var root = this.config.root;
+        if (root != null) {
+            var button = document.createElement(this.config.type);
 
-            button.id = config.id;
-            button.innerText = config.text;
-            button.className = this.xtype;
-            button.renderer = true;
+            button.innerText = this.config.text;
+            button.config = this.config;
+            button.id = this.config.id;
+            this.config.renderer = true;
 
-            button.config = config;
+            utils.getCmp(this.config.root.id).items.push(button);
+            root.appendChild(button);
 
-            $('#' + this.el.id)[0].items.push(button);
-            this.el.appendChild(button);
+            utils.addStyle(this.config.id, this.config.xtype)
+
             return this;
         }
 

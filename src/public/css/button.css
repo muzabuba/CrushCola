@@ -14,3 +14,8 @@
 {
     background-color: cornflowerblue;
 }
+
+.btn-left
+{
+    float: left;
+}
